@@ -20,14 +20,12 @@ var arrayTime = [
   ['8 PM', 0.6]];
 //Empty array that all location objects push themselves into. Stores array of all location objects.
 var arrayLocation = [];
-
 //this function taken from https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
 var getRand = function ( min, max ) {
   min = Math.ceil(min);
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min + 1)) + min;
 };
-
 //this function calculates the staff needed given a customer amount
 var calcStaff = function ( customers ) {
   if ( customers <= 40 ) {
@@ -36,7 +34,6 @@ var calcStaff = function ( customers ) {
     return Math.ceil( customers / 20 );
   }
 };
-
 //create thead of given table
 var theadCreate = function ( table ) {
   var tableDataElement = document.getElementById( table );
@@ -58,7 +55,6 @@ var theadCreate = function ( table ) {
   theadElement.appendChild(trElement);
   tableDataElement.appendChild(theadElement);
 };
-
 //create tfoot row for sales table, calculates hourly totals, and sum total of all sales from all locations
 var tfootCreate = function () {
   var allTotal = 0;
@@ -86,7 +82,6 @@ var tfootCreate = function () {
   tfootElement.appendChild(trElement);
   tableDataElement.appendChild(tfootElement);
 };
-
 //place object constructor function
 function Place ( name, min, max, avg ) {
   this.name = name;
@@ -98,7 +93,7 @@ function Place ( name, min, max, avg ) {
   this.dailyTotal = 0;
   arrayLocation.push(this);
 }
-
+//calculates data using object properties
 Place.prototype.calcData = function() {
   for ( var i = 0; i < arrayTime.length; i++ ){
     var customers = getRand(this.customerMin, this.customerMax) * arrayTime[i][1];
@@ -111,7 +106,6 @@ Place.prototype.calcData = function() {
   //adds the dailyTotal to the end of the soldByHour array for Sales <table>'s Daily Location Total column
   this.soldByHour.push(this.dailyTotal);
 };
-
 //takes a table id and corresponding array from object (sales table & .soldByHour array)
 Place.prototype.trStoreCreate = function ( table, array ) {
   var tableDataElement = document.getElementById( table );
@@ -126,7 +120,6 @@ Place.prototype.trStoreCreate = function ( table, array ) {
   }
   tableDataElement.appendChild(trElement);
 };
-
 
 var pike = new Place ( '1st & Pike', 23, 65, 6.3 );
 var seatac = new Place ( 'SeaTac', 3, 24, 1.2 );
@@ -152,9 +145,3 @@ alki.calcData();
 alki.trStoreCreate( 'Sales', alki.soldByHour );
 alki.trStoreCreate( 'Staff', alki.staffByHour );
 tfootCreate();
-
-
-// for (var i = 0; i < arrayPlace.length; i++ ){
-//   console.log(arrayPlace[i].name);
-// }
-
