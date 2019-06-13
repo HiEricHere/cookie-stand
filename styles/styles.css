@@ -1,3 +1,55 @@
 body {
-  background-color : lightgoldenrodyellow;
+  background-color : lightyellow;
+  font-family: monospace;
+}
+
+.table {
+  background: lightyellow;
+  margin : 10px;
+  padding : 10px;
+  overflow : auto;
+}
+
+form {
+  margin: 10px;
+  padding: 10px;
+}
+
+input {
+  margin: 0.5em;
+  width: 200px;
+}
+
+th {
+  background: darkkhaki;
+  padding : 0.5em;
+  margin : 0.5em;
+  text-align: center;
+  color: lightyellow;
+  font-family: monospace;
+  font-size: 1.2em;
+}
+
+td {
+ background: lightyellow;
+ text-align: center;
+ font-family: monospace;
+ font-size: 1.1em;
+}
+
+tr > td {
+  border-top: 0.5px solid lightgrey;
+  border-bottom: 0.5px solid lightgrey;
+}
+
+tr > td:last-child, th:last-child {
+  border-right: 0.5px solid lightgrey;
+}
+
+#Staff > tr:last-child > th:first-child {
+  border-bottom: 0.5px solid lightgrey;
+}
+
+tfoot > tr > th:first-child {
+  border-bottom: 0.5px solid lightgrey;
 }

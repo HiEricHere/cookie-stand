@@ -11,13 +11,26 @@
             <h1>List of Projected Sales and Staffing by Location</h1>
         </header>
         <main>
-            <table id="Sales">
-            </table>
-            <table id="Staff">
-            </table>
+            <form id="formAddNew">
+                <fieldset>
+                    <legend>Add a new location</legend>
+                    <input id="location" name="location" type="text" placeholder="New location name: ..."/>
+                    <input id="minCustomer" name="minCustomer" type="number" placeholder="Minimum expected customers: ..."/>
+                    <input id="maxCustomer" name="maxCustomer" type="number" placeholder="Maximum expected customers: ..."/>
+                    <input id="avgSold" name="avgSold" type="number" placeholder="Average sales per customer: ..."/>
+                    <button id="button">Done</button>
+                </fieldset>
+            </form>
+            <div class="table">
+                <table id="Sales">
+                </table>
+            </div>
+            <div class="table">
+                <table id="Staff">
+                </table>
+            </div>
         </main>
         <footer>
-
         </footer>
         <script src="./js/app.js"></script>
     </body>

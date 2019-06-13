@@ -40,4 +40,16 @@ Keep global randNum generator for calculating raw customer projection
   Create tr prototype function
    - Takes table id name and array. If table id = Sales then array should be this.soldByHour. If id = Staff then this.staffByHour.
    - Populates the row with the object's sales or staff, depending on the table id/array pairing chosen.
+------------------------------
+version Wednesday
+
+Implement markup that will add input boxes asking for
+a) location name b) min customers expected c) max customers expected d) expected avg sales per customer
+
+Implement an event listener that:
+Take this input and generates a new location object
+Adds the new location object to the existing table
+Remove the old footer, and recreate a new footer with updated total values and reinsert onto the bottom.
+
+
   
