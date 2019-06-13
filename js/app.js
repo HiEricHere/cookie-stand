@@ -18,14 +18,17 @@ var arrayTime = [
   ['6 PM', 0.3],
   ['7 PM', 0.4],
   ['8 PM', 0.6]];
+
 //Empty array that all location objects push themselves into. Stores array of all location objects.
 var arrayLocation = [];
+
 //this function taken from https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
 var getRand = function ( min, max ) {
   min = Math.ceil(min);
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min + 1)) + min;
 };
+
 //this function calculates the staff needed given a customer amount
 var calcStaff = function ( customers ) {
   if ( customers <= 40 ) {
@@ -34,36 +37,37 @@ var calcStaff = function ( customers ) {
     return Math.ceil( customers / 20 );
   }
 };
+
+//function takes the new element needed, content to add, and the parent node that it will be appended to and adds the element
+function addElement ( newElement, content, parentNode ) {
+  var tempElement = document.createElement( newElement);
+  tempElement.textContent = content;
+  parentNode.appendChild(tempElement);
+}
+
 //create thead of given table
 var theadCreate = function ( table ) {
   var tableDataElement = document.getElementById( table );
   var theadElement = document.createElement( 'thead' );
   var trElement = document.createElement( 'tr' );
-  var thElementFirst = document.createElement( 'th' );
-  thElementFirst.textContent = table;
-  trElement.appendChild(thElementFirst);
+  addElement( 'th', table, trElement );
   for ( var i = 0; i < arrayTime.length; i++ ){
-    var thElement = document.createElement( 'th' );
-    thElement.textContent = arrayTime[i][0];
-    trElement.appendChild(thElement);
+    addElement( 'th', arrayTime[i][0], trElement );
   }
   if ( table === 'Sales' ) {
-    var thElementLast = document.createElement( 'th' );
-    thElementLast.textContent = 'Daily Location Total';
-    trElement.appendChild(thElementLast);
+    addElement( 'th', 'Daily Location Total', trElement );
   }
   theadElement.appendChild(trElement);
   tableDataElement.appendChild(theadElement);
 };
+
 //create tfoot row for sales table, calculates hourly totals, and sum total of all sales from all locations
 var tfootCreate = function () {
   var allTotal = 0;
   var tableDataElement = document.getElementById( 'Sales' );
   var tfootElement = document.createElement( 'tfoot' );
   var trElement = document.createElement( 'tr' );
-  var thElement = document.createElement ( 'th' );
-  thElement.textContent = 'Totals';
-  trElement.appendChild(thElement);
+  addElement( 'th', 'Totals', trElement );
   //loops through time array and location array and picks the soldByHour at of each location for each hour and adds to allTotal and hourTotal
   for ( var i = 0; i < arrayTime.length; i++ ){
     var hourTotal = 0;
@@ -71,17 +75,14 @@ var tfootCreate = function () {
       hourTotal += arrayLocation[n].soldByHour[i];
       allTotal += arrayLocation[n].soldByHour[i];
     }
-    var tdElement = document.createElement( 'td' );
-    tdElement.textContent = hourTotal;
-    trElement.appendChild(tdElement);
+    addElement( 'td', hourTotal, trElement );
   }
   //append last td element = allTotal, the sum total of all sales from all locations
-  var tdElementLast = document.createElement( 'td' );
-  tdElementLast.textContent = allTotal;
-  trElement.appendChild(tdElementLast);
+  addElement( 'td', allTotal, trElement );
   tfootElement.appendChild(trElement);
   tableDataElement.appendChild(tfootElement);
 };
+
 //place object constructor function
 function Place ( name, min, max, avg ) {
   this.name = name;
@@ -93,55 +94,77 @@ function Place ( name, min, max, avg ) {
   this.dailyTotal = 0;
   arrayLocation.push(this);
 }
-//calculates data using object properties
-Place.prototype.calcData = function() {
-  for ( var i = 0; i < arrayTime.length; i++ ){
-    var customers = getRand(this.customerMin, this.customerMax) * arrayTime[i][1];
-    var staffers = calcStaff(customers);
-    var sold = parseInt(customers * this.avgSold, 10);
-    this.soldByHour.push(sold);
-    this.staffByHour.push(staffers);
-    this.dailyTotal += sold;
+
+Place.prototype = {
+
+  trStoreCreate : function ( table ) {
+    var tableDataElement = document.getElementById( table );
+    var trElement = document.createElement('tr');
+    addElement( 'th', this.name, trElement );
+    if ( table === 'Sales' ){
+      for ( var i = 0; i < this.soldByHour.length; i++ ){
+        addElement ( 'td', this.soldByHour[i], trElement );
+      }
+    } else {
+      for ( var n = 0; n < this.staffByHour.length; n++ ){
+        addElement ( 'td', this.staffByHour[n], trElement );
+      }
+    }
+    tableDataElement.appendChild(trElement);
+  },
+
+  //calculates data using object properties
+  calcData : function() {
+    for ( var i = 0; i < arrayTime.length; i++ ){
+      var customers = getRand(this.customerMin, this.customerMax) * arrayTime[i][1];
+      var staffers = calcStaff(customers);
+      var sold = parseInt(customers * this.avgSold, 10);
+      this.soldByHour.push(sold);
+      this.staffByHour.push(staffers);
+      this.dailyTotal += sold;
+    }
+    //adds the dailyTotal to the end of the soldByHour array for Sales <table>'s Daily Location Total column
+    this.soldByHour.push(this.dailyTotal);
   }
-  //adds the dailyTotal to the end of the soldByHour array for Sales <table>'s Daily Location Total column
-  this.soldByHour.push(this.dailyTotal);
-};
-//takes a table id and corresponding array from object (sales table & .soldByHour array)
-Place.prototype.trStoreCreate = function ( table, array ) {
-  var tableDataElement = document.getElementById( table );
-  var trElement = document.createElement('tr');
-  var thElement = document.createElement('th');
-  thElement.textContent = this.name;
-  trElement.appendChild(thElement);
-  for ( var i = 0; i < array.length; i++ ){
-    var tdElement = document.createElement('td');
-    tdElement.textContent = array[i];
-    trElement.appendChild(tdElement);
-  }
-  tableDataElement.appendChild(trElement);
 };
 
-var pike = new Place ( '1st & Pike', 23, 65, 6.3 );
-var seatac = new Place ( 'SeaTac', 3, 24, 1.2 );
-var center = new Place ( 'Seattle Center', 11, 38, 3.7 );
-var capitol = new Place ( 'Capitol Hill', 20, 39, 2.3 );
-var alki = new Place ( 'Alki', 11, 38, 3.7 );
+//Event listener for everything you need to add an object
+var form = document.getElementById('formAddNew');
+form.addEventListener('submit', function( event ){
+  //not on a server
+  event.preventDefault();
+  
+  //Creates a new object using the given input values
+  new Place ( event.target.location.value, event.target.minCustomer.value, event.target.maxCustomer.value, event.target.avgSold.value );
+  arrayLocation[arrayLocation.length-1].calcData();
+  arrayLocation[arrayLocation.length-1].trStoreCreate( 'Sales' );
+  arrayLocation[arrayLocation.length-1].trStoreCreate( 'Staff' );
+  
+  //Deletes the old footer and recalcs a new one
+  var tableDataElement = document.getElementById( 'Sales' );
+  tableDataElement.deleteRow(-1);
+  tfootCreate();
+});
 
-theadCreate( 'Sales' );
-theadCreate( 'Staff' );
-pike.calcData();
-pike.trStoreCreate( 'Sales', pike.soldByHour );
-pike.trStoreCreate( 'Staff', pike.staffByHour );
-seatac.calcData();
-seatac.trStoreCreate( 'Sales', seatac.soldByHour );
-seatac.trStoreCreate( 'Staff', seatac.staffByHour );
-center.calcData();
-center.trStoreCreate( 'Sales', center.soldByHour );
-center.trStoreCreate( 'Staff', center.staffByHour );
-capitol.calcData();
-capitol.trStoreCreate( 'Sales', capitol.soldByHour );
-capitol.trStoreCreate( 'Staff', capitol.staffByHour );
-alki.calcData();
-alki.trStoreCreate( 'Sales', alki.soldByHour );
-alki.trStoreCreate( 'Staff', alki.staffByHour );
-tfootCreate();
+//Creates the default 5 known locations
+new Place ( '1st & Pike', 23, 65, 6.3 );
+new Place ( 'SeaTac', 3, 24, 1.2 );
+new Place ( 'Seattle Center', 11, 38, 3.7 );
+new Place ( 'Capitol Hill', 20, 39, 2.3 );
+new Place ( 'Alki', 11, 38, 3.7 );
+
+//initializes everything in the arrayLocation list.
+function letThereBeLight (){
+  for ( var i = 0; i < arrayLocation.length; i++ ){
+    arrayLocation[i].calcData();
+    arrayLocation[i].trStoreCreate( 'Sales' );
+    arrayLocation[i].trStoreCreate( 'Staff');
+  }
+  theadCreate( 'Sales' );
+  theadCreate( 'Staff' );
+  tfootCreate();
+}
+
+//boom
+letThereBeLight();
+
