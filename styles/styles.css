@@ -1,55 +1,98 @@
 body {
-  background-color : lightyellow;
-  font-family: monospace;
+  text-align : center;
+  background-color : rgb(255, 255, 236);
+  font-family : monospace;
+}
+
+nav {
+  color : salmon;
+  font-family : monospace;
+  margin : 20px;
+  text-align : center;
+}
+
+figcaption {
+  margin : 10px;
+  padding : 10px;
+}
+
+nav > a {
+  border-radius: 5px;
+  color : salmon;
+  text-decoration : none;
+  padding : 5px;
+  margin : 5px;
+}
+
+a:hover {
+  background-color : salmon;
+  color : lightgoldenrodyellow;
 }
 
 .table {
-  background: lightyellow;
-  margin : 10px;
+  margin : 10px auto 10px auto;
   padding : 10px;
   overflow : auto;
+  text-align : center;
+}
+
+#salesDiv.table {
+  width : 960px;
+}
+
+#staffDiv.table{
+  width : 900px;
 }
 
 form {
-  margin: 10px;
-  padding: 10px;
+  text-align: center;
+  margin : 10px auto 10px auto;
+  padding : 10px;
+  width : 950px;
+}
+
+fieldset {
+  border : 1px solid salmon;
+  border-radius : 10px;
+  margin : 5px auto 5px auto;
+  padding : 10px;
+  padding-bottom : 20px;
+  width : 865px;
+}
+
+legend {
+  border-radius : 7px;
+  color : salmon;
+  margin : 5px auto 5px auto;
+  padding : 5px;
+  width : 161px;
 }
 
 input {
-  margin: 0.5em;
-  width: 200px;
+  font-style: italic;
+  width: 175px;
+}
+
+tr {
+  color : salmon;
+}
+
+tr:hover {
+  background-color : salmon;
+  color : lightgoldenrodyellow;
 }
 
 th {
-  background: darkkhaki;
-  padding : 0.5em;
-  margin : 0.5em;
-  text-align: center;
-  color: lightyellow;
-  font-family: monospace;
-  font-size: 1.2em;
+  font-size : 1.2em;
+  padding : 5px;
 }
 
 td {
- background: lightyellow;
- text-align: center;
- font-family: monospace;
- font-size: 1.1em;
+  font-size : 1.1em;
 }
 
 tr > td {
-  border-top: 0.5px solid lightgrey;
-  border-bottom: 0.5px solid lightgrey;
+  border-top : 0.5px solid salmon;
+  border-bottom:  0.5px solid salmon;
 }
 
-tr > td:last-child, th:last-child {
-  border-right: 0.5px solid lightgrey;
-}
-
-#Staff > tr:last-child > th:first-child {
-  border-bottom: 0.5px solid lightgrey;
-}
-
-tfoot > tr > th:first-child {
-  border-bottom: 0.5px solid lightgrey;
-}
