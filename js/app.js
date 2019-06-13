@@ -40,9 +40,9 @@ var calcStaff = function ( customers ) {
 
 //function takes the new element needed, content to add, and the parent node that it will be appended to and adds the element
 function addElement ( newElement, content, parentNode ) {
-  var tempElement = document.createElement( newElement);
+  var tempElement = document.createElement( newElement );
   tempElement.textContent = content;
-  parentNode.appendChild(tempElement);
+  parentNode.appendChild( tempElement );
 }
 
 //create thead of given table
@@ -54,8 +54,9 @@ var theadCreate = function ( table ) {
   for ( var i = 0; i < arrayTime.length; i++ ){
     addElement( 'th', arrayTime[i][0], trElement );
   }
+  //Specific instructions for the Sales table - also add a Total header at the end of the row
   if ( table === 'Sales' ) {
-    addElement( 'th', 'Daily Location Total', trElement );
+    addElement( 'th', 'Total', trElement );
   }
   theadElement.appendChild(trElement);
   tableDataElement.appendChild(theadElement);
@@ -68,7 +69,7 @@ var tfootCreate = function () {
   var tfootElement = document.createElement( 'tfoot' );
   var trElement = document.createElement( 'tr' );
   addElement( 'th', 'Totals', trElement );
-  //loops through time array and location array and picks the soldByHour at of each location for each hour and adds to allTotal and hourTotal
+  //loops through time array and location array and picks the soldByHour at each location for each hour and adds to allTotal and hourTotal. Appends hourTotal for each hour.
   for ( var i = 0; i < arrayTime.length; i++ ){
     var hourTotal = 0;
     for ( var n = 0; n < arrayLocation.length; n++ ){
@@ -97,6 +98,7 @@ function Place ( name, min, max, avg ) {
 
 Place.prototype = {
 
+  //Takes a table ID argument (Sales or Staff) and creates a row for a location in the requested table.
   trStoreCreate : function ( table ) {
     var tableDataElement = document.getElementById( table );
     var trElement = document.createElement('tr');
@@ -140,7 +142,7 @@ form.addEventListener('submit', function( event ){
   arrayLocation[arrayLocation.length-1].trStoreCreate( 'Sales' );
   arrayLocation[arrayLocation.length-1].trStoreCreate( 'Staff' );
   
-  //Deletes the old footer and recalcs a new one
+  //Deletes the old footer, recalcs and appends a new one
   var tableDataElement = document.getElementById( 'Sales' );
   tableDataElement.deleteRow(-1);
   tfootCreate();
