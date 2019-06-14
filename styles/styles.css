@@ -1,19 +1,55 @@
 body {
-  text-align : center;
   background-color : rgb(255, 255, 236);
   font-family : monospace;
+  text-align : center;
+  position : relative;
+}
+
+main{
+  margin : 0px auto 0px auto;
+}
+
+/* nav and links */
+.navWrapper {
+  display : inline-block;
+  height :65px;
+  width : 960px;
+  margin-top : 10px;
+  margin-bottom : 10px;
+  position : relative;
 }
 
 nav {
   color : salmon;
   font-family : monospace;
-  margin : 20px;
+  font-size : 18px;
+  height : 50px;
+  left : 144px;
+  padding-top : 15px;
+  position : absolute;
   text-align : center;
+  top : 0;
+  width : 672px;
 }
 
-figcaption {
-  margin : 10px;
-  padding : 10px;
+#salmonFigure {
+  position : absolute;
+  left : 0;
+  top : 0;
+}
+
+#salmon {
+  width : 144px;
+}
+
+#chinookFigure {
+  position : absolute;
+  right : 0;
+  top : 0;
+}
+
+#chinook {
+  width : 144px;
 }
 
 nav > a {
@@ -21,7 +57,8 @@ nav > a {
   color : salmon;
   text-decoration : none;
   padding : 5px;
-  margin : 5px;
+  margin-left : 5px;
+  margin-right : 5px;
 }
 
 a:hover {
@@ -29,26 +66,68 @@ a:hover {
   color : lightgoldenrodyellow;
 }
 
+/* Tables */
 .table {
   margin : 10px auto 10px auto;
-  padding : 10px;
+  padding : 10px 0px 10px 0px;
   overflow : auto;
   text-align : center;
 }
 
-#salesDiv.table {
-  width : 960px;
+#salesDiv {
+  width : 950px;
 }
 
-#staffDiv.table{
-  width : 900px;
+#staffDiv{
+  width : 895px;
 }
 
+tr {
+  color : salmon;
+  border-bottom:  0.5px solid salmon;
+}
+
+tr:hover {
+  background-color : salmon;
+  color : lightgoldenrodyellow;  
+}
+
+tr:hover > td + th {
+  border-bottom : 0px;
+}
+
+th {
+  font-size : 1.2em;
+  margin : 5px;
+  padding : 5px;
+}
+
+thead > tr > th {
+  background-color : salmon;
+  color : lightgoldenrodyellow;
+}
+
+tr:last-child {
+  background-color : salmon;
+  color : lightgoldenrodyellow;
+}
+
+td {
+  font-size : 1.1em;
+  margin : 5px;
+  padding : 5px;
+}
+
+tr > *:first-child {
+  text-align: left;
+}
+
+/* input form */
 form {
   text-align: center;
-  margin : 10px auto 10px auto;
-  padding : 10px;
-  width : 950px;
+  margin : 0px auto 10px auto;
+  padding : 10px 0px 10px 0px;
+  width : 960px;
 }
 
 fieldset {
@@ -73,26 +152,18 @@ input {
   width: 175px;
 }
 
-tr {
-  color : salmon;
+/* Text */
+
+h1 {
+  font-size : 50px;
 }
 
-tr:hover {
-  background-color : salmon;
-  color : lightgoldenrodyellow;
+h3 {
+  font-size : 30px;
 }
 
-th {
-  font-size : 1.2em;
-  padding : 5px;
-}
 
-td {
-  font-size : 1.1em;
-}
 
-tr > td {
-  border-top : 0.5px solid salmon;
-  border-bottom:  0.5px solid salmon;
-}
+
+
 
