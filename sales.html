@@ -1,17 +1,27 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Sales</title>
+        <title>Pat's Old Fashioned Salmon Cookies - Sales</title>
         <link rel="stylesheet" href="./styles/reset.css"/>
         <link rel="stylesheet" href="./styles/styles.css"/>
     </head>
-    <body>
-        <header>
-            <nav>
-                <a href = "index.html">Front Page</a>
-            </nav>
+    <body class="salespage">
+        <header class="salespage">
+                <div class="navWrapper">
+                    <figure id="salmonFigure">
+                        <img id="salmon" src="./images/salmon.png" alt="It's a salmon"/>
+                    </figure>
+                    <nav>
+                        <a href="index.html">Home</a>
+                        <a href="sales.html">Sales</a>
+                        <a href="about.html">About</a>
+                    </nav>
+                    <figure id="chinookFigure">
+                        <img id="chinook" src="images/chinook.jpg" alt="It's a chinook"/>
+                    </figure>
+                </div>
         </header>
-        <main>
+        <main class="salespage">
             <form id="formAddNew">
                 <fieldset>
                     <legend>Add a new location</legend>
@@ -31,7 +41,7 @@
                 </table>
             </div>
         </main>
-        <footer>
+        <footer class="salespage">
             
         </footer>
         <script src="./js/app.js"></script>
