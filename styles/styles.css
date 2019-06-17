@@ -26,13 +26,11 @@ header > div {
 }
 
 header > div > img:first-child {
-  /* display: inline-block; */
   float: left;
   width: 285px;
 }
 
 header > div > img:last-child {
-  /* display: inline-block; */
   float: right;
   width: 285px;
 }
@@ -42,9 +40,33 @@ header > div > nav {
   width: 450px;
 }
 
-header > div > nav > ul {
-  margin: 44px auto;
-  width: 300px;
+nav > div {
+  border-radius: 5px;
+  background-color: rgb(147, 181, 226);
+  display: block;
+  margin: auto;
+  width: 400px;
+}
+
+nav > div:first-child > img {
+  background-color: rgb(255, 255, 236);
+  border-radius: 15px;
+  height: 25px;
+  margin: 0px 175px;
+  padding: 5px;
+}
+
+nav > div:last-child > img {
+  background-color: rgb(255, 255, 236);
+  border-radius: 15px;
+  height: 25px;
+  margin: 0px 180px;
+  padding: 5px;
+}
+
+ul {
+  margin: 10px auto;
+  width: 400px;
 }
 
 li {
@@ -64,7 +86,15 @@ a:visited, a:link {
 }
 
 header > div > nav > ul > li:nth-child(2) {
-  margin: 0px 45px;
+  margin: 0px 47.5px;
+}
+
+header > div > nav > ul > li:first-child {
+  margin: 0px 0px 0px 47.5px;
+}
+
+header > div > nav > ul > li:last-child {
+  margin: 0px 47.5px 0px 0px;
 }
 
 a:hover {
