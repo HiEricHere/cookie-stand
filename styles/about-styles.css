@@ -5,5 +5,18 @@ main {
   width: 1024px;
   margin: auto;
   text-align: center;
+  overflow: auto;
   padding: 20px;
+}
+
+main > img {
+  float: left;
+  margin: 0px 15px 0px 0px;
+  width: 10%;
+}
+
+main > p {
+  color: salmon;
+  font-size: 15px;
+  text-align: left;
 }

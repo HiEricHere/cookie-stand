@@ -135,13 +135,13 @@ var form = document.getElementById('formAddNew');
 form.addEventListener('submit', function( event ){
   //not on a server
   event.preventDefault();
-  
+
   //Creates a new object using the given input values
   new Place ( event.target.location.value, event.target.minCustomer.value, event.target.maxCustomer.value, event.target.avgSold.value );
   arrayLocation[arrayLocation.length-1].calcData();
   arrayLocation[arrayLocation.length-1].trStoreCreate( 'Sales' );
   arrayLocation[arrayLocation.length-1].trStoreCreate( 'Staff' );
-  
+
   //Deletes the old footer, recalcs and appends a new one
   var tableDataElement = document.getElementById( 'Sales' );
   tableDataElement.deleteRow(-1);
