@@ -22,7 +22,6 @@ header {
 header > div {
   margin: auto;
   width: 1024px;
-  overflow: hidden;
 }
 
 header > div > img:first-child {
@@ -60,7 +59,7 @@ nav > div:last-child > img {
   background-color: rgb(255, 255, 236);
   border-radius: 15px;
   height: 25px;
-  margin: 0px 180px;
+  margin: 0px 181px;
   padding: 5px;
 }
 
@@ -85,15 +84,15 @@ a:visited, a:link {
   text-decoration: none;
 }
 
-header > div > nav > ul > li:nth-child(2) {
+nav > ul > li:nth-child(2) {
   margin: 0px 47.5px;
 }
 
-header > div > nav > ul > li:first-child {
+nav > ul > li:first-child {
   margin: 0px 0px 0px 47.5px;
 }
 
-header > div > nav > ul > li:last-child {
+nav > ul > li:last-child {
   margin: 0px 47.5px 0px 0px;
 }
 
