@@ -1,0 +1,100 @@
+/* background-color : rgb(255, 255, 236) */
+/* color: salmon */
+
+main {
+  margin: 0px auto 30px auto;
+  text-align: center;
+  overflow: auto;
+  width: 960px;
+}
+
+form {
+  background-color: rgb(255, 255, 236);
+  border-radius: 10px;
+  color: salmon;
+  padding: 15px 15px;
+  margin: 0px auto 30px auto;
+}
+
+fieldset {
+  border: 1.5px solid salmon;
+  border-radius: 10px;
+  padding: 15px;
+}
+
+legend {
+  padding: 0px 10px;
+}
+
+input {
+  border: 0px;
+  border-radius: 3px;
+  background-color: rgb(147, 181, 226);
+  color: white;
+  font-size: 12px;
+  font-style: italic;
+  width: 190px;
+}
+
+::placeholder {
+  color: white;
+}
+
+main > div {
+  background-color: rgb(255, 255, 236);
+  border-radius: 15px;
+  color: salmon;
+  padding: 15px;
+  margin: 0px auto 30px auto;
+}
+
+table {
+  border-collapse: separate;
+  border-spacing: 1px;
+  margin: auto;
+  width: 930px;
+}
+
+tr > th:first-child {
+  text-align: left;
+}
+
+thead, tfoot {
+  /* background-color: salmon; */
+  background-color: rgb(147, 181, 226);
+  color: rgb(255, 255, 236);
+}
+
+th {
+  padding: 5px;
+}
+
+thead > tr > th:first-child {
+  border-top-left-radius: 10px;
+}
+
+thead > tr > th:last-child {
+  border-top-right-radius: 10px;
+}
+
+tfoot > tr > th:first-child {
+  border-bottom-left-radius: 10px;
+}
+
+tfoot > tr > td:last-child {
+  border-bottom-right-radius: 10px;
+}
+
+main > div:last-child > table > tr:last-child > th:first-child {
+  border-bottom-left-radius: 10px;
+}
+
+main > div:last-child > table > tr:last-child > td:last-child {
+  border-bottom-right-radius: 10px;
+}
+
+tr:hover {
+  background-color: salmon;
+  color: white;
+  transition-duration: 300ms;
+}

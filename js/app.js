@@ -101,7 +101,7 @@ Place.prototype = {
   //Takes a table ID argument (Sales or Staff) and creates a row for a location in the requested table.
   trStoreCreate : function ( table ) {
     var tableDataElement = document.getElementById( table );
-    var trElement = document.createElement('tr');
+    var trElement = document.createElement( 'tr' );
     addElement( 'th', this.name, trElement );
     if ( table === 'Sales' ){
       for ( var i = 0; i < this.soldByHour.length; i++ ){
@@ -112,7 +112,7 @@ Place.prototype = {
         addElement ( 'td', this.staffByHour[n], trElement );
       }
     }
-    tableDataElement.appendChild(trElement);
+    tableDataElement.appendChild( trElement );
   },
 
   //calculates data using object properties
@@ -157,13 +157,13 @@ new Place ( 'Alki', 11, 38, 3.7 );
 
 //initializes everything in the arrayLocation list.
 function letThereBeLight (){
+  theadCreate( 'Sales' );
+  theadCreate( 'Staff' );
   for ( var i = 0; i < arrayLocation.length; i++ ){
     arrayLocation[i].calcData();
     arrayLocation[i].trStoreCreate( 'Sales' );
     arrayLocation[i].trStoreCreate( 'Staff');
   }
-  theadCreate( 'Sales' );
-  theadCreate( 'Staff' );
   tfootCreate();
 }
 
