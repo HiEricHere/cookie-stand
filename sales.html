@@ -4,46 +4,42 @@
         <title>Pat's Old Fashioned Salmon Cookies - Sales</title>
         <link rel="stylesheet" href="./styles/reset.css"/>
         <link rel="stylesheet" href="./styles/styles.css"/>
+        <link rel="stylesheet" href="./styles/sales-styles.css"/>
     </head>
-    <body class="salespage">
-        <header class="salespage">
-                <div class="navWrapper">
-                    <figure id="salmonFigure">
-                        <img id="salmon" src="./images/salmon.png" alt="It's a salmon"/>
-                    </figure>
-                    <nav>
-                        <a href="index.html">Home</a>
-                        <a href="sales.html">Sales</a>
-                        <a href="about.html">About</a>
-                    </nav>
-                    <figure id="chinookFigure">
-                        <img id="chinook" src="images/chinook.jpg" alt="It's a chinook"/>
-                    </figure>
-                </div>
+    <body>
+        <header>
+            <div>
+                <img src="./images/salmon.png" alt="It's a salmon"/>
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="sales.html">Sales</a></li>
+                        <li><a href="about.html">About</a></li>
+                    </ul>
+                </nav>
+                <img src="images/chinook.png" alt="It's a chinook"/>
+            </div>
         </header>
-        <main class="salespage">
+        <main>
             <form id="formAddNew">
                 <fieldset>
                     <legend>Add a new location</legend>
-                    <input id="location" name="location" type="text" placeholder="New location name: ..."/>
-                    <input id="minCustomer" name="minCustomer" type="number" placeholder="Minimum expected customers: ..."/>
-                    <input id="maxCustomer" name="maxCustomer" type="number" placeholder="Maximum expected customers: ..."/>
-                    <input id="avgSold" name="avgSold" type="number" placeholder="Average sales per customer: ..."/>
+                    <input id="location" name="location" type="text" placeholder=" New location name"/>
+                    <input id="minCustomer" name="minCustomer" type="number" placeholder=" Minimum expected customers"/>
+                    <input id="maxCustomer" name="maxCustomer" type="number" placeholder=" Maximum expected customers"/>
+                    <input id="avgSold" name="avgSold" type="number" placeholder=" Average sales per customer"/>
                     <button id="button">Done</button>
                 </fieldset>
             </form>
-            <div class="table" id="salesDiv">
+            <div>
                 <table id="Sales">
                 </table>
             </div>
-            <div class="table" id="staffDiv">
+            <div>
                 <table id="Staff">
                 </table>
             </div>
         </main>
-        <footer class="salespage">
-            
-        </footer>
         <script src="./js/app.js"></script>
     </body>
 </html>
